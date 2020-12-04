@@ -60,8 +60,11 @@ spec:
     spec:
       containers:
       - name: tdc-b
-        image: tuxtor/tdc-b
+        image: tuxtor/tdc-b:1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        env:
+        - name: tdc
+          value: "Teria sido melhor assitir o filme do pele"
 ---

@@ -42,7 +42,7 @@ public class MPResource {
     @Timeout( value=2000L )
     @Operation( description = "Endpoint criado para testar alguns dos Microservice Patterns com MicroProfile")
     public String generateText() throws IllegalStateException {
-        var test = "Seja bem vindo ao consumer service \n";
+        var test = "Consumer service \n";
         test += "\n A minha configuração diz " + tdc;
 
         var totalPhrases = phraseRepository.getPhrases().size();

@@ -14,20 +14,34 @@
 # limitations under the License.
 #
 
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-  name: tdc-a
+  name: tdc-public-b-service
   labels:
     app: tdc-a
 spec:
-  type: NodePort
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8081
+  selector:
+    app: tdc-a
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: tdc-a-service
+  labels:
+    app: tdc-a
+spec:
+  type: ClusterIP
   selector:
     app: tdc-a
   ports:
-  - port: 8080
-    targetPort: 8080
-    name: http
+    - port: 8081
+      name: http
 ---
 kind: Deployment
 apiVersion: apps/v1
@@ -46,8 +60,8 @@ spec:
     spec:
       containers:
       - name: tdc-a
-        image: tdc-a
-        imagePullPolicy: IfNotPresent
+        image: tuxtor/tdc-a
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---

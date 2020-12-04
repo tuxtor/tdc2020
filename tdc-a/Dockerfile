@@ -26,4 +26,4 @@ COPY --from=build /helidon/target/libs ./libs
 
 CMD ["java", "-jar", "tdc-a.jar"]
 
-EXPOSE 8080
+EXPOSE 8081
