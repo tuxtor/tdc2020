@@ -1,5 +1,5 @@
 
-package com.nabenik;
+package com.nabenik.controller;
 
 import java.util.concurrent.atomic.AtomicReference;
 

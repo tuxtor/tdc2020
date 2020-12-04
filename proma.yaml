@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tdc-a-servicemonitor
+  namespace: default
+  labels:
+    app: tdc-a
+    monitor: tdc
+spec:
+  selector:
+    matchLabels:
+      app: tdc-a
+  endpoints:
+  - port: http
+    interval: 10s

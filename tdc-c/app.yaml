@@ -17,7 +17,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: tdc-c
+  name: tdc-c-service
   labels:
     app: tdc-c
 spec:
@@ -46,24 +46,7 @@ spec:
       containers:
       - name: tdc-c
         image: tuxtor/tdc-c
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-tdc-c
-spec:
-  rules:
-    - host: kubecontroller
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/"
-            backend:
-              service:
-                name: tdc-c
-                port:
-                  number: 8080
 ---
